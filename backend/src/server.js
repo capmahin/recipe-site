@@ -40,7 +40,16 @@ app.post("/api/favorites", async (req, res) => {
 
 app.get("/api/favorites/:userId", async (req, res) => {
   try {
-  } catch (error) {}
+    const { userId } = req.params;
+
+    const userFavorites = await db
+      .select()
+      .from(favoritesTable)
+      .where(eq(favoritesTable.userId, userId));
+  } catch (error) {
+    console.log("Error fetching the favorite", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
 });
 
 app.delete("/api/favorites/:userId/:recipeId", async (req, res) => {

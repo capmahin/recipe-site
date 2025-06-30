@@ -38,6 +38,11 @@ app.post("/api/favorites", async (req, res) => {
   }
 });
 
+app.get("/api/favorites/:userId", async (req, res) => {
+  try {
+  } catch (error) {}
+});
+
 app.delete("/api/favorites/:userId/:recipeId", async (req, res) => {
   const { userId, recipeId } = req.params;
 
